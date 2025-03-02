@@ -11,7 +11,7 @@ namespace NJsonSchema.CodeGeneration.TypeScript
     /// <summary>Generates the property name for a given TypeScript <see cref="JsonSchemaProperty"/>.</summary>
     public sealed class TypeScriptPropertyNameGenerator : IPropertyNameGenerator
     {
-        private static readonly char[] _reservedFirstPassChars = ['"', '@', '?', '.', '=', '+'];
+        private static readonly char[] _reservedFirstPassChars = ['"', '@', '?', '#', '.', '=', '+'];
         private static readonly char[] _reservedSecondPassChars = ['*', ':', '-'];
 
         /// <summary>Gets or sets the reserved names.</summary>
@@ -27,6 +27,7 @@ namespace NJsonSchema.CodeGeneration.TypeScript
                 name = name.Replace("\"", string.Empty)
                     .Replace("@", string.Empty)
                     .Replace("?", string.Empty)
+                    .Replace("#", string.Empty)
                     .Replace(".", "-")
                     .Replace("=", "-")
                     .Replace("+", "plus");
